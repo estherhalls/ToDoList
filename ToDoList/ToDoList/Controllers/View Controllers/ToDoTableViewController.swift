@@ -40,12 +40,23 @@ class ToDoTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath)
         let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
         cell.textLabel?.text = toDo.toDoName
-        cell.detailTextLabel?.text = "\(TaskController.sharedInstance.tasks.count)"
+        /// how to relay information of number of tasks within the toDo item to the detail text?
+//        cell.detailTextLabel?.text = "\(TaskController.sharedInstance.tasks.count)"
 
         // Configure the cell...
 
         return cell
     }
+    
+    /// This method is called when user swipes to delete a row
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if editingStyle == .delete {
+            let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
+            ToDoController.sharedInstance.delete(toDoToDelete: toDo)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     // MARK: - Helper Functions
     /// Reset text field to clear after create button is tapped
     func resetTextField() {
