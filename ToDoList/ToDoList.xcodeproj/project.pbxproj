@@ -13,6 +13,7 @@
 		EBF680C528FCF2500012391D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF680C428FCF2500012391D /* Assets.xcassets */; };
 		EBF680D628FCF83D0012391D /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */; };
 		EBF680D828FCF8560012391D /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680D728FCF8560012391D /* TaskListTableViewController.swift */; };
+		EBF680DB28FCFB640012391D /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680DA28FCFB640012391D /* TaskListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EBF680C928FCF2500012391D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		EBF680D728FCF8560012391D /* TaskListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
+		EBF680DA28FCFB640012391D /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +111,19 @@
 		EBF680D428FCF2BB0012391D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EBF680D928FCFB260012391D /* CustomCell */,
 				EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */,
 				EBF680D728FCF8560012391D /* TaskListTableViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EBF680D928FCFB260012391D /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				EBF680DA28FCFB640012391D /* TaskListTableViewCell.swift */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF680DB28FCFB640012391D /* TaskListTableViewCell.swift in Sources */,
 				EBF680BC28FCF24E0012391D /* AppDelegate.swift in Sources */,
 				EBF680D628FCF83D0012391D /* ToDoTableViewController.swift in Sources */,
 				EBF680D828FCF8560012391D /* TaskListTableViewController.swift in Sources */,
