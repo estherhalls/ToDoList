@@ -8,10 +8,12 @@
 import Foundation
 class Task: Codable {
     var taskName: String
+    var isComplete: Bool
     let id: UUID
     
-    init(taskName: String, id: UUID = UUID()) {
+    init(taskName: String, isComplete: Bool = false, id: UUID = UUID()) {
         self.taskName = taskName
+        self.isComplete = isComplete
         self.id = id
     }
     

@@ -60,11 +60,12 @@ class TaskListTableViewController: UITableViewController {
     let dismissAction = UIAlertAction(title: "No", style: .destructive, handler: nil)
     alertController.addAction(dismissAction)
     let confirmAction = UIAlertAction(title: "Yes", style: .default) { _ in
+        self.ToDoController.sharedInstance.delete(toDoToDelete: <#T##ToDo#>)
         // is this where I need delegate? YES
         //        self.ToDoController.sharedInstance.delete(toDoToDelete: ToDo)
         /// Navigate back to ToDo TableView when To Do item is deleted
-        navigationController?.popViewController(animated: true)
     }
+    navigationController?.popViewController(animated: true)
     
     /*
      // MARK: - Navigation

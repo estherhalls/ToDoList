@@ -7,17 +7,30 @@
 
 import UIKit
 
+// Protocol Declaration for toggling task checked button:
+protocol TaskListTableViewCellDelegate: AnyObject {
+    func toggleTaskCompleteButtonTapped(cell: TaskListTableViewCell)
+}
+
 class TaskListTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Outlets
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var taskCompleteButton: UIButton!
+    weak var delegate: TaskListTableViewCellDelegate?
+    
+   // Helper Functions:
+    func configure(with task: Task) {
+        taskNameLabel.text = task.taskName
+        
+        let imageName = task.isComplete ? "checkmark.square.fill" : "checkmark.square"
+        let completeCheckmark = UIImage(systemName: imageName)
+        taskCompleteButton.setImage(completeCheckmark, for: .normal)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+// MARK: - Actions
+    
+    @IBAction func taskCompleteButtonTapped(_ sender: Any) {
+        delegate?.toggleTaskCompleteButtonTapped(cell: self)
     }
-
 }
