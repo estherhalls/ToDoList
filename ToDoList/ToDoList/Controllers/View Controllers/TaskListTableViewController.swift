@@ -9,6 +9,9 @@ import UIKit
 
 class TaskListTableViewController: UITableViewController {
     
+    // Receiver:
+    var toDoReceiver: ToDo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

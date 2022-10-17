@@ -14,9 +14,10 @@
 		EBF680D628FCF83D0012391D /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */; };
 		EBF680D828FCF8560012391D /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680D728FCF8560012391D /* TaskListTableViewController.swift */; };
 		EBF680DB28FCFB640012391D /* TaskListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680DA28FCFB640012391D /* TaskListTableViewCell.swift */; };
-		EBF680DF28FD0FEE0012391D /* ToDoTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680DE28FD0FEE0012391D /* ToDoTaskController.swift */; };
 		EBF680E128FD11D70012391D /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E028FD11D70012391D /* ToDo.swift */; };
 		EBF680E328FD11E60012391D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E228FD11E60012391D /* Task.swift */; };
+		EBF680E528FD19D00012391D /* ToDoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E428FD19D00012391D /* ToDoController.swift */; };
+		EBF680E728FD19E20012391D /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E628FD19E20012391D /* TaskController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +30,10 @@
 		EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 		EBF680D728FCF8560012391D /* TaskListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
 		EBF680DA28FCFB640012391D /* TaskListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewCell.swift; sourceTree = "<group>"; };
-		EBF680DE28FD0FEE0012391D /* ToDoTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskController.swift; sourceTree = "<group>"; };
 		EBF680E028FD11D70012391D /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		EBF680E228FD11E60012391D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		EBF680E428FD19D00012391D /* ToDoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoController.swift; sourceTree = "<group>"; };
+		EBF680E628FD19E20012391D /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,8 @@
 		EBF680D328FCF2B10012391D /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EBF680DE28FD0FEE0012391D /* ToDoTaskController.swift */,
+				EBF680E428FD19D00012391D /* ToDoController.swift */,
+				EBF680E628FD19E20012391D /* TaskController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -205,10 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF680DF28FD0FEE0012391D /* ToDoTaskController.swift in Sources */,
 				EBF680DB28FCFB640012391D /* TaskListTableViewCell.swift in Sources */,
+				EBF680E528FD19D00012391D /* ToDoController.swift in Sources */,
 				EBF680E128FD11D70012391D /* ToDo.swift in Sources */,
 				EBF680BC28FCF24E0012391D /* AppDelegate.swift in Sources */,
+				EBF680E728FD19E20012391D /* TaskController.swift in Sources */,
 				EBF680D628FCF83D0012391D /* ToDoTableViewController.swift in Sources */,
 				EBF680D828FCF8560012391D /* TaskListTableViewController.swift in Sources */,
 				EBF680E328FD11E60012391D /* Task.swift in Sources */,
