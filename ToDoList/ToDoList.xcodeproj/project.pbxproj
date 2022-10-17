@@ -11,6 +11,8 @@
 		EBF680BE28FCF24E0012391D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680BD28FCF24E0012391D /* SceneDelegate.swift */; };
 		EBF680C328FCF24E0012391D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF680C128FCF24E0012391D /* Main.storyboard */; };
 		EBF680C528FCF2500012391D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF680C428FCF2500012391D /* Assets.xcassets */; };
+		EBF680D628FCF83D0012391D /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */; };
+		EBF680D828FCF8560012391D /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680D728FCF8560012391D /* TaskListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		EBF680C228FCF24E0012391D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBF680C428FCF2500012391D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBF680C928FCF2500012391D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
+		EBF680D728FCF8560012391D /* TaskListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,8 @@
 		EBF680D428FCF2BB0012391D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EBF680D528FCF83D0012391D /* ToDoTableViewController.swift */,
+				EBF680D728FCF8560012391D /* TaskListTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -180,6 +186,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF680BC28FCF24E0012391D /* AppDelegate.swift in Sources */,
+				EBF680D628FCF83D0012391D /* ToDoTableViewController.swift in Sources */,
+				EBF680D828FCF8560012391D /* TaskListTableViewController.swift in Sources */,
 				EBF680BE28FCF24E0012391D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
