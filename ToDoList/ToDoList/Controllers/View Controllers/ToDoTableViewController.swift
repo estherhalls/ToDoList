@@ -37,14 +37,11 @@ class ToDoTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as? ToDoListTableViewCell else { return UITableViewCell() }
         let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
-        cell.textLabel?.text = toDo.toDoName
+        cell.configureCell(with: toDo)
         /// how to relay information of number of tasks within the toDo item to the detail text?
 //        cell.detailTextLabel?.text = "\(TaskController.sharedInstance.tasks.count)"
-
-        // Configure the cell...
-
         return cell
     }
     
