@@ -6,9 +6,9 @@
 //
 
 import UIKit
-//protocol TaskListTableViewControllerDelegate: AnyObject {
-//    let deleteToDoRow =
-//}
+protocol TaskListTableViewControllerDelegate: AnyObject {
+    {get set} deleteToDoRow: NSIndexPath
+}
 
 class TaskListTableViewController: UITableViewController {
     // MARK: - Outlets
@@ -51,28 +51,36 @@ class TaskListTableViewController: UITableViewController {
         }
     }
     
-//    private func presentNewDeviceAlertController() {
-//        let alertController = UIAlertController(title: "All Done!", message: "Delete from to do list?", preferredStyle: .alert)
-//    let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//    alertController.addAction(dismissAction)
-//        
-//    let confirmAction = UIAlertAction(title: "Delete", style: .default) { _ in
-//        DispatchQueue.main.async {
-//            let toDo = toDoController.toDoList[indexPath.row]
-//            ToDoController.sharedInstance.delete(toDoToDelete: toDo)
-//        }
-//    }
-//        /// Navigate back to ToDo TableView when To Do item is deleted
-//        navigationController?.popViewController(animated: true)
-//    }
+    private func presentNewDeviceAlertController() {
+        static guard let indexPath = tableView.indexPath(for: ) else {return}
+        let alertController = UIAlertController(title: "All Tasks Complete!", message: "Delete from To-Do list?", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
+            DispatchQueue.main.async {
+                let toDo = toDoController.toDoList[indexPath.row]
+                toDoController.toggleToDoComplete(for: toDo)
+            }
+        }
+        let confirmAction = UIAlertAction(title: "Delete", style: .default) { _ in
+            DispatchQueue.main.async {
+                let toDo = toDoController.toDoList[indexPath.row]
+                ToDoController.sharedInstance.delete(toDoToDelete: toDo)
+            }
+        }
+        alertController.addAction(dismissAction)
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true)
+        /// Navigate back to ToDo TableView when To Do item is deleted
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     // MARK: - Helper Functions
     /// Reset text field to clear after create button is tapped
     func resetTextField() {
         taskNameTextField.text = ""
     }
-     
-     // MARK: - Actions
+    
+    // MARK: - Actions
     @IBAction func addTaskButtonTapped(_ sender: Any) {
         /// is there text to save?
         guard let taskName = taskNameTextField.text,
@@ -83,12 +91,14 @@ class TaskListTableViewController: UITableViewController {
         tableView.reloadData()
     }
 }
+
 extension TaskListTableViewController: TaskListTableViewCellDelegate {
     func toggleTaskCompleteButtonTapped(cell: TaskListTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell),
-        let toDoReceiver = toDoReceiver else {return}
+              let toDoReceiver = toDoReceiver else {return}
         let selectedTask = toDoReceiver.toDoTasks[indexPath.row]
         toDoController.toggleTaskComplete(for: selectedTask)
         cell.configure(with: selectedTask)
     }
+    
 }
