@@ -7,6 +7,7 @@
 
 import Foundation
 class ToDoController {
+    
     // MARK: - Singleton
     static let sharedInstance = ToDoController()
     
@@ -46,6 +47,11 @@ class ToDoController {
         guard let index = toDo.toDoTasks.firstIndex(of: deleteTask)
         else { return }
         toDo.toDoTasks.remove(at: index)
+        save()
+    }
+    
+    func toggleTaskComplete(for task: Task) {
+        task.isComplete.toggle()
         save()
     }
     
