@@ -8,8 +8,10 @@
 import UIKit
 
 class TaskListTableViewController: UITableViewController {
+    // MARK: - Outlets
+    @IBOutlet weak var taskNameTextField: UITextField!
     
-    // Receiver:
+    // Receiver (of type, not assignment operator):
     var toDoReceiver: ToDo?
     
     override func viewDidLoad() {
@@ -53,25 +55,34 @@ class TaskListTableViewController: UITableViewController {
         }
     }
     
-    private func presentNewDeviceAlertController() {
-        let alertController = UIAlertController(title: "All Done!", message: "Want us to delete this list?", preferredStyle: .alert)
-    let dismissAction = UIAlertAction(title: "No", style: .destructive, handler: nil)
-    alertController.addAction(dismissAction)
-    let confirmAction = UIAlertAction(title: "Yes", style: .default) { _ in
-        self.toDoController.delete(toDoToDelete: <#T##ToDo#>)
-        /// Navigate back to ToDo TableView when To Do item is deleted
-        navigationController?.popViewController(animated: true)
+//    private func presentNewDeviceAlertController() {
+//        let alertController = UIAlertController(title: "All Done!", message: "Delete from to do list?", preferredStyle: .alert)
+//    let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//    alertController.addAction(dismissAction)
+//        
+//    let confirmAction = UIAlertAction(title: "Delete", style: .default) { _ in
+//        DispatchQueue.main.async {
+//            toDoReceiver.tableView.deleteRows(at: [IndexPath], with: .fade)
+//        }
+//    }
+//        /// Navigate back to ToDo TableView when To Do item is deleted
+//        navigationController?.popViewController(animated: true)
+//    }
+    // MARK: - Helper Functions
+    /// Reset text field to clear after create button is tapped
+    func resetTextField() {
+        taskNameTextField.text = ""
     }
-    }
-    
-    /*
-     // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+     // MARK: - Actions
+    @IBAction func addTaskButtonTapped(_ sender: Any) {
+        /// is there text to save?
+        guard let taskName = taskNameTextField.text,
+              let toDo = toDoReceiver
+        else {return}
+        TaskController.create(name: taskName, in: toDo)
+        resetTextField()
+        tableView.reloadData()
+    }
+ 
 }

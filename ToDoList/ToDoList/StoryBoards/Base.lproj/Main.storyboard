@@ -133,6 +133,9 @@
                                             <rect key="frame" x="285.33333333333331" y="0.0" width="54.666666666666686" height="28"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Add"/>
+                                            <connections>
+                                                <action selector="addTaskButtonTapped:" destination="Oqd-w2-Lt9" eventType="touchUpInside" id="ede-Le-uvR"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -190,6 +193,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tasks" id="y7P-8Z-GaZ"/>
+                    <connections>
+                        <outlet property="taskNameTextField" destination="O4u-Gk-m74" id="kGG-qt-2G0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9iT-2L-5gu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
