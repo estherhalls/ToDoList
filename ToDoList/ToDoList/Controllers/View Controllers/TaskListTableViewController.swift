@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol TaskListTableViewControllerDelegate: AnyObject {
+    let deleteToDoRow = 
+}
 
 class TaskListTableViewController: UITableViewController {
     // MARK: - Outlets
@@ -16,32 +19,20 @@ class TaskListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // unwrap optional with nil coallescing
         return toDoReceiver?.toDoTasks.count ?? 0
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? TaskListTableViewCell,
               let toDoReceiver = toDoReceiver else {
             return UITableViewCell()}
         let task = toDoReceiver.toDoTasks[indexPath.row]
-        
         cell.configure(with: task)
-        
-        // Configure the cell...
-        
         return cell
     }
     
@@ -55,19 +46,21 @@ class TaskListTableViewController: UITableViewController {
         }
     }
     
-//    private func presentNewDeviceAlertController() {
-//        let alertController = UIAlertController(title: "All Done!", message: "Delete from to do list?", preferredStyle: .alert)
-//    let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//    alertController.addAction(dismissAction)
-//        
-//    let confirmAction = UIAlertAction(title: "Delete", style: .default) { _ in
-//        DispatchQueue.main.async {
-//            toDoReceiver.tableView.deleteRows(at: [IndexPath], with: .fade)
-//        }
-//    }
-//        /// Navigate back to ToDo TableView when To Do item is deleted
-//        navigationController?.popViewController(animated: true)
-//    }
+    private func presentNewDeviceAlertController() {
+        let alertController = UIAlertController(title: "All Done!", message: "Delete from to do list?", preferredStyle: .alert)
+    let dismissAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    alertController.addAction(dismissAction)
+        
+    let confirmAction = UIAlertAction(title: "Delete", style: .default) { _ in
+        DispatchQueue.main.async {
+            let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
+            ToDoController.sharedInstance.delete(toDoToDelete: toDo)
+        }
+    }
+        /// Navigate back to ToDo TableView when To Do item is deleted
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Helper Functions
     /// Reset text field to clear after create button is tapped
     func resetTextField() {

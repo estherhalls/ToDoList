@@ -17,7 +17,6 @@
 		EBF680E128FD11D70012391D /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E028FD11D70012391D /* ToDo.swift */; };
 		EBF680E328FD11E60012391D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E228FD11E60012391D /* Task.swift */; };
 		EBF680E528FD19D00012391D /* ToDoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E428FD19D00012391D /* ToDoController.swift */; };
-		EBF680E728FD19E20012391D /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E628FD19E20012391D /* TaskController.swift */; };
 		EBF680E928FD1F4C0012391D /* ToDoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF680E828FD1F4C0012391D /* ToDoListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		EBF680E028FD11D70012391D /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		EBF680E228FD11E60012391D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		EBF680E428FD19D00012391D /* ToDoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoController.swift; sourceTree = "<group>"; };
-		EBF680E628FD19E20012391D /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		EBF680E828FD1F4C0012391D /* ToDoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				EBF680E428FD19D00012391D /* ToDoController.swift */,
-				EBF680E628FD19E20012391D /* TaskController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -215,7 +212,6 @@
 				EBF680E528FD19D00012391D /* ToDoController.swift in Sources */,
 				EBF680E128FD11D70012391D /* ToDo.swift in Sources */,
 				EBF680BC28FCF24E0012391D /* AppDelegate.swift in Sources */,
-				EBF680E728FD19E20012391D /* TaskController.swift in Sources */,
 				EBF680D628FCF83D0012391D /* ToDoTableViewController.swift in Sources */,
 				EBF680D828FCF8560012391D /* TaskListTableViewController.swift in Sources */,
 				EBF680E928FD1F4C0012391D /* ToDoListTableViewCell.swift in Sources */,

@@ -18,16 +18,34 @@ class ToDoController {
         load()
     }
     
-    // MARK: - CRUD
+    // MARK: - ToDo CRUD
     func createToDo(name: String) {
         let toDo = ToDo(toDoName: name)
         toDoList.append(toDo)
         save()
     }
     
-    func delete(toDoToDelete: ToDo) {
+    func deleteToDo(toDoToDelete: ToDo) {
         guard let index = toDoList.firstIndex(of: toDoToDelete) else {return}
         toDoList.remove(at: index)
+        save()
+    }
+    
+    func toggleToDoComplete(for toDo: ToDo) {
+        toDo.isComplete.toggle()
+        save()
+    }
+    
+    // MARK: - Task CRUD
+    func createTask(name: String, in toDo: ToDo){
+        let task = Task(taskName: name)
+        toDo.toDoTasks.append(task)
+    }
+    
+    func deleteTask(deleteTask: Task, from toDo: ToDo) {
+        guard let index = toDo.toDoTasks.firstIndex(of: deleteTask)
+        else { return }
+        toDo.toDoTasks.remove(at: index)
         save()
     }
     

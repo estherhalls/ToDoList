@@ -14,6 +14,7 @@ class ToDoTableViewController: UITableViewController {
     
     // MARK: - Properties
     let toDoController = ToDoController.sharedInstance
+    let 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,28 +31,26 @@ class ToDoTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ToDoController.sharedInstance.toDoList.count
+        return toDoController.toDoList.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as? ToDoListTableViewCell else { return UITableViewCell() }
-        let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
+        let toDo = toDoController.toDoList[indexPath.row]
+        
+        /// each cell will have its own intern - cell by cell basis
+        cell.delegate = self
         cell.configureCell(toDo: toDo)
-        /// how to relay information of number of tasks within the toDo item to the detail text?
-//        cell.detailTextLabel?.text = "\(TaskController.sharedInstance.tasks.count)"
         return cell
     }
     
     /// This method is called when user swipes to delete a row
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
-            ToDoController.sharedInstance.delete(toDoToDelete: toDo)
+            let toDo = toDoController.toDoList[indexPath.row]
+            toDoController.delete(toDoToDelete: toDo)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -61,8 +60,8 @@ class ToDoTableViewController: UITableViewController {
     func resetTextField() {
         toDoNameTextField.text = ""
     }
-    // MARK: - Actions
     
+    // MARK: - Actions
     @IBAction func createButtonTapped(_ sender: Any) {
         /// is there text to save?
         guard let toDoName = toDoNameTextField.text
@@ -72,11 +71,7 @@ class ToDoTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-
-   
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTaskTVC" {
             if let index = tableView.indexPathForSelectedRow {
@@ -86,8 +81,12 @@ class ToDoTableViewController: UITableViewController {
                 }
             }
         }
- 
     }
- 
+}
 
+extension ToDoTableViewController: ToDoListTableViewCellDelegate {
+    func toggleCompleteButtonTapped(cell: ToDoListTableViewCell) {
+        guard let index = tableView.indexPath(for: cell) else {return}
+        let toDo =
+    }
 }
