@@ -17,6 +17,9 @@ class TaskListTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var taskCompleteButton: UIButton!
+    
+    /// I need an intern - optional because we don't need it now, but want the job listing available.
+    /// delegate is weak var and weak is always optional
     weak var delegate: TaskListTableViewCellDelegate?
     
    // Helper Functions:

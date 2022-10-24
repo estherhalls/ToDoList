@@ -10,8 +10,10 @@ import UIKit
 class ToDoTableViewController: UITableViewController {
     
     // MARK: - Outlets
-    
     @IBOutlet weak var toDoNameTextField: UITextField!
+    
+    // MARK: - Properties
+    let toDoController = ToDoController.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,14 +41,14 @@ class ToDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as? ToDoListTableViewCell else { return UITableViewCell() }
         let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
-        cell.configureCell(with: toDo)
+        cell.configureCell(toDo: toDo)
         /// how to relay information of number of tasks within the toDo item to the detail text?
 //        cell.detailTextLabel?.text = "\(TaskController.sharedInstance.tasks.count)"
         return cell
     }
     
     /// This method is called when user swipes to delete a row
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let toDo = ToDoController.sharedInstance.toDoList[indexPath.row]
             ToDoController.sharedInstance.delete(toDoToDelete: toDo)
@@ -65,8 +67,9 @@ class ToDoTableViewController: UITableViewController {
         /// is there text to save?
         guard let toDoName = toDoNameTextField.text
         else {return}
-        ToDoController.sharedInstance.createToDo()
+        ToDoController.sharedInstance.createToDo(name: toDoName)
         resetTextField()
+        tableView.reloadData()
     }
     
 

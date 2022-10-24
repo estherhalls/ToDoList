@@ -53,19 +53,16 @@ class TaskListTableViewController: UITableViewController {
         }
     }
     
-    
     private func presentNewDeviceAlertController() {
         let alertController = UIAlertController(title: "All Done!", message: "Want us to delete this list?", preferredStyle: .alert)
-    }
     let dismissAction = UIAlertAction(title: "No", style: .destructive, handler: nil)
     alertController.addAction(dismissAction)
     let confirmAction = UIAlertAction(title: "Yes", style: .default) { _ in
-        self.ToDoController.sharedInstance.delete(toDoToDelete: <#T##ToDo#>)
-        // is this where I need delegate? YES
-        //        self.ToDoController.sharedInstance.delete(toDoToDelete: ToDo)
+        self.toDoController.delete(toDoToDelete: <#T##ToDo#>)
         /// Navigate back to ToDo TableView when To Do item is deleted
+        navigationController?.popViewController(animated: true)
     }
-    navigationController?.popViewController(animated: true)
+    }
     
     /*
      // MARK: - Navigation

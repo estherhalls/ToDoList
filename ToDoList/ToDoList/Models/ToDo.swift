@@ -9,11 +9,13 @@ import Foundation
 class ToDo: Codable {
     var toDoName: String
     var toDoTasks: [Task]
+    var isComplete: Bool
     let id: UUID
     
-    init(toDoName: String, toDoTasks: [Task] = [], id: UUID = UUID()) {
+    init(toDoName: String, toDoTasks: [Task] = [], isComplete: Bool = false, id: UUID = UUID()) {
         self.toDoName = toDoName
         self.toDoTasks = toDoTasks
+        self.isComplete = isComplete
         self.id = id
     }
     
