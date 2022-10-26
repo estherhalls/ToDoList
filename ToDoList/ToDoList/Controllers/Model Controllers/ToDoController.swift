@@ -13,6 +13,7 @@ class ToDoController {
     
     // MARK: - SOT
     private(set) var toDoList: [ToDo] = []
+   
     
     // load user's stored data upon launch of ToDoController
     init() {
@@ -54,6 +55,11 @@ class ToDoController {
         task.isComplete.toggle()
         save()
     }
+  
+    
+//    func allTasksComplete(in toDo: ToDo, yes: Bool = true) {
+//        toDo.tasks.forEach($0.isComplete = yes)
+//    }
     
     // MARK: - Persistance
     /// Need the URL - which is a property. Source of truth - also a property

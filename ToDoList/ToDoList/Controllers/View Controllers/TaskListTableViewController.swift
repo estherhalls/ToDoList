@@ -54,8 +54,8 @@ class TaskListTableViewController: UITableViewController {
     func presentNewDeviceAlertController() {
         
         let alertController = UIAlertController(title: "All Tasks Complete!", message: "Delete from To-Do list?", preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Cancel", style: .destructive)
-        let confirmAction = UIAlertAction(title: "Delete", style: .default) { _ in
+        let dismissAction = UIAlertAction(title: "Cancel", style: .default)
+        let confirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             DispatchQueue.main.async {
                 guard let toDo = self.toDoReceiver else {return}
                 self.toDoController.deleteToDo(toDoToDelete: toDo)
@@ -92,9 +92,18 @@ extension TaskListTableViewController: TaskListTableViewCellDelegate {
     func toggleTaskCompleteButtonTapped(cell: TaskListTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell),
               let toDoReceiver = toDoReceiver else {return}
+        
         let selectedTask = toDoReceiver.toDoTasks[indexPath.row]
         toDoController.toggleTaskComplete(for: selectedTask)
         cell.configure(with: selectedTask)
+        
+        
+        for task in toDoReceiver.toDoTasks {
+            if task.isComplete != true {
+                return
+            }
+        }
+        toDoReceiver.isComplete = true
+        presentNewDeviceAlertController()
     }
-    
 }
