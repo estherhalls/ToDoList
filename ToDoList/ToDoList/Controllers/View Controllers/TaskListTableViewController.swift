@@ -7,7 +7,7 @@
 
 import UIKit
 protocol TaskListTableViewControllerDelegate: AnyObject {
-    {get set} deleteToDoRow: NSIndexPath
+    
 }
 
 class TaskListTableViewController: UITableViewController {
@@ -51,26 +51,21 @@ class TaskListTableViewController: UITableViewController {
         }
     }
     
-    private func presentNewDeviceAlertController() {
-        static guard let indexPath = tableView.indexPath(for: ) else {return}
+    func presentNewDeviceAlertController() {
+        
         let alertController = UIAlertController(title: "All Tasks Complete!", message: "Delete from To-Do list?", preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in
-            DispatchQueue.main.async {
-                let toDo = toDoController.toDoList[indexPath.row]
-                toDoController.toggleToDoComplete(for: toDo)
-            }
-        }
+        let dismissAction = UIAlertAction(title: "Cancel", style: .destructive)
         let confirmAction = UIAlertAction(title: "Delete", style: .default) { _ in
             DispatchQueue.main.async {
-                let toDo = toDoController.toDoList[indexPath.row]
-                ToDoController.sharedInstance.delete(toDoToDelete: toDo)
+                guard let toDo = self.toDoReceiver else {return}
+                self.toDoController.deleteToDo(toDoToDelete: toDo)
+                /// Navigate back to ToDo TableView when To Do item is deleted
+                self.navigationController?.popViewController(animated: true)
             }
         }
         alertController.addAction(dismissAction)
         alertController.addAction(confirmAction)
         present(alertController, animated: true)
-        /// Navigate back to ToDo TableView when To Do item is deleted
-        navigationController?.popViewController(animated: true)
     }
     
     
@@ -81,6 +76,7 @@ class TaskListTableViewController: UITableViewController {
     }
     
     // MARK: - Actions
+    /// Task can only be added this way when arriving at detail view from table view cell. I tried adding segue from ToDo title creation text field to detail VC, which worked but would not allow tasks to be added until I left and came back in. Will require additional "is this new or updated" functionality to model controller and add task button. I will return to this later.
     @IBAction func addTaskButtonTapped(_ sender: Any) {
         /// is there text to save?
         guard let taskName = taskNameTextField.text,

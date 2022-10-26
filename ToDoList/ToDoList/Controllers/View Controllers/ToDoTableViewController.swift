@@ -82,7 +82,8 @@ class ToDoTableViewController: UITableViewController {
             }
         }
     }
-}
+
+} // End of Class
 
 extension ToDoTableViewController: ToDoListTableViewCellDelegate {
     func isCompleteButtonTapped(_ cell: ToDoListTableViewCell) {
